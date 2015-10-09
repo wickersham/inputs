@@ -9,7 +9,16 @@ function inputs() {
             var downDir = false;
             var leftDir =  false;
             var rightDir = false;
+            var punch = false;
       
+         var map = []; // Or you could call it "key"
+         onkeydown = onkeyup = function(e){
+        e = e || event; // to deal with IE
+        map[e.keyCode] = e.type == 'keydown';
+        /*insert conditional here*/
+}
+
+         
 //var $direction = function() {
 //      $(document).bind("keydown", "left", function() {
 //      var left = true;
@@ -172,18 +181,28 @@ function inputs() {
             balltop(101, 97);
         }
             //down or s or num2
-        if(event.keyCode == 40 || event.keyCode == 40 || event.keyCode == 98) { 
+        if(event.keyCode == 40 || event.keyCode == 83 || event.keyCode == 98) { 
             var downDir = true;
             ctx.moveTo(101,105);
             ctx.lineTo(101,145);
             ctx.stroke();
             balltop(101, 113);
         }
+            //z or p
+        if(event.keyCode == 90 || event.keyCode == 80) { 
+            var punch = true;
+           
+        }
+
+
     });
     
-    if (leftDir == true && downDir == true) {
-        balltop(200, 200);
-    };
+    
+        while (punch === true) {
+             buttonDown(193, 95);
+        }
+    
+        ctx.fillText("up " + upDir,200,200);
 
     
     window.addEventListener("gamepadconnected", function(e) {
